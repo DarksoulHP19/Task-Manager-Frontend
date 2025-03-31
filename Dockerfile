@@ -38,7 +38,7 @@ RUN chmod +x /usr/bin/entrypoint.sh
 EXPOSE 80
 
 # Copy NGINX configuration file
-ENTRYPOINT [ "usr/bin/entrypoint.sh" ]
+ENTRYPOINT [ "/usr/bin/entrypoint.sh" ]
 
 CMD ["nginx", "-g", "daemon off;"]
 # ====== END ======
