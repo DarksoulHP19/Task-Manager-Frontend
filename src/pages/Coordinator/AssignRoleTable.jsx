@@ -3,10 +3,7 @@ import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import axios from 'axios';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaEdit, FaTrash } from 'react-icons/fa';
-import { API_BASE_URL } from '../../config/api';
-
-// Fetch token from localStorage (assuming it's stored during login)
-const getToken = () => localStorage.getItem('token');
+import { API_BASE_URL, getToken } from '../../config/api';
 
 // Fetch users from the backend
 const fetchUsers = async () => {
@@ -16,7 +13,7 @@ const fetchUsers = async () => {
       Authorization: `Bearer ${token}`,
     },
   });
-  return response.data; // Assuming the API returns the user data in the response body
+  return response.data;
 };
 
 const AssignRoleTable = () => {

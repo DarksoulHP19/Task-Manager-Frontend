@@ -3,9 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { FaUsers, FaCheck, FaExclamationCircle } from 'react-icons/fa';
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
-import { API_BASE_URL } from '../../config/api';
-
-const getToken = () => localStorage.getItem('token');
+import { API_BASE_URL, getToken } from '../../config/api';
 
 const AssignGroupForm = () => {
   const [formData, setFormData] = useState({

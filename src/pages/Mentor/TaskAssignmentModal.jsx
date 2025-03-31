@@ -3,9 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { FaClipboardList, FaCheck } from 'react-icons/fa';
 import axios from 'axios';
 import { useQuery } from '@tanstack/react-query';
-import { API_BASE_URL } from '../../config/api';
-
-const getToken = () => localStorage.getItem('token');
+import { API_BASE_URL, getToken } from '../../config/api';
 
 function TaskAssignmentModal() {
   const [selectedGroup, setSelectedGroup] = useState('');

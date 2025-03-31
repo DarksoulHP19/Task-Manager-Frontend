@@ -1,22 +1,21 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import axios from "axios";
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaCheckCircle, FaTasks, FaClipboardList } from 'react-icons/fa';
-import { API_BASE_URL } from '../../config/api';
+import { API_BASE_URL, getToken } from '../../config/api';
 
 const CompleteTask = () => {
   const queryClient = useQueryClient();
   const [showSuccess, setShowSuccess] = useState(false);
-  const [tasks, setTasks] = useState([]);
 
   // Fetch tasks using React Query
-  const { data: tasksData, isLoading, error } = useQuery({
+  const { data: tasks, isLoading, error } = useQuery({
     queryKey: ['tasks'],
     queryFn: async () => {
       const response = await axios.get(`${API_BASE_URL}/getTask`, {
         headers: {
-          'Authorization': `Bearer ${localStorage.getItem('token')}`
+          'Authorization': `Bearer ${getToken()}`
         }
       });
       return response.data.data;
@@ -30,7 +29,7 @@ const CompleteTask = () => {
         { taskArrid, tasksids },
         {
           headers: {
-            'Authorization': `Bearer ${localStorage.getItem('token')}`
+            'Authorization': `Bearer ${getToken()}`
           }
         }
       );
@@ -48,31 +47,6 @@ const CompleteTask = () => {
       taskArrid,
       tasksids: [taskId]
     });
-  };
-
-  const fetchTasks = async () => {
-    try {
-      const response = await axios.get(`${API_BASE_URL}/getTask`, {
-        headers: {
-          'Authorization': `Bearer ${localStorage.getItem('token')}`
-        }
-      });
-      setTasks(response.data.data);
-    } catch (error) {
-      console.error('Error fetching tasks:', error);
-    }
-  };
-
-  const handleCompleteTask = async (taskId, taskIndex) => {
-    try {
-      await axios.post(`${API_BASE_URL}/complteTask`, {
-        taskArrid: taskId,
-        tasksids: [taskIndex]
-      });
-      fetchTasks();
-    } catch (error) {
-      console.error('Error completing task:', error);
-    }
   };
 
   if (isLoading) {

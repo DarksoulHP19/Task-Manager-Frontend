@@ -3,10 +3,7 @@ import { useQuery } from '@tanstack/react-query';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaEdit, FaTrash } from 'react-icons/fa';
 import axios from 'axios';
-import { API_BASE_URL } from '../../config/api';
-
-// Get token from localStorage
-const getToken = () => localStorage.getItem('token');
+import { API_BASE_URL, getToken } from '../../config/api';
 
 // Fetch users from the API
 const fetchUsers = async () => {

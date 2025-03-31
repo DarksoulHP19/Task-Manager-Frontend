@@ -3,8 +3,8 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { FaSearch, FaChartBar } from 'react-icons/fa';
 import axios from 'axios';
 import { useQuery } from '@tanstack/react-query';
-import { API_BASE_URL } from '../../config/api';
 
+const API_BASE_URL = 'http://127.0.0.1:3000/api/v1';
 const getToken = () => localStorage.getItem('token');
 
 function ProgressReportModal() {
