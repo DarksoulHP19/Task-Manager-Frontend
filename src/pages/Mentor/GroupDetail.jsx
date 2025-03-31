@@ -3,9 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import { FaUsers, FaEnvelope, FaUser, FaUserTie } from 'react-icons/fa';
-import { API_BASE_URL } from '../../config/api';
-
-const getToken = () => localStorage.getItem('token');
+import { API_BASE_URL, getToken } from '../../config/api';
 
 function GroupDetail() {
   const { data: groupsData, isLoading, error } = useQuery({
