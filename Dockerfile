@@ -28,7 +28,7 @@ WORKDIR /usr/share/nginx/html
 RUN rm -rf ./*
 
 # Copy build files from the build phase
-COPY --from=build /app/build .  
+COPY --from=build /app/dist .  
      
 
 EXPOSE 80
