@@ -28,17 +28,10 @@ WORKDIR /usr/share/nginx/html
 RUN rm -rf ./*
 
 # Copy build files from the build phase
-COPY --from=build /app/dist .  
-
-# Copy nginx configuration and entrypoint script
-COPY ./nginx.conf /etc/nginx/conf.d/default.conf    
-COPY ./entrypoint.sh /usr/bin/entrypoint.sh         
-RUN chmod +x /usr/bin/entrypoint.sh      
+COPY --from=build /app/build .  
+     
 
 EXPOSE 80
 
-# Copy NGINX configuration file
-ENTRYPOINT [ "/usr/bin/entrypoint.sh" ]
-
-CMD ["nginx", "-g", "daemon off;"]
+ENTRYPOINT ["nginx", "-g", "daemon off;"]
 # ====== END ======
