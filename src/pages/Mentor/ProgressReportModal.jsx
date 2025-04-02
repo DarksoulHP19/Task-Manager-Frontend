@@ -3,9 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { FaSearch, FaChartBar } from 'react-icons/fa';
 import axios from 'axios';
 import { useQuery } from '@tanstack/react-query';
-
-const API_BASE_URL = 'http://127.0.0.1:3000/api/v1';
-const getToken = () => localStorage.getItem('token');
+import { API_BASE_URL, getToken } from '../../config/api';
 
 function ProgressReportModal() {
   const [selectedGroup, setSelectedGroup] = useState('');
