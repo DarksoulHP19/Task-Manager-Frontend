@@ -1,4 +1,4 @@
-# ====== BUILD STAGE ======
+# ====== BUILD STAGE =====
 # Build phase
 FROM node:alpine3.21 AS build
 
@@ -34,4 +34,4 @@ COPY --from=build /app/dist .
 EXPOSE 80
 
 ENTRYPOINT ["nginx", "-g", "daemon off;"]
-# ====== END ======
+# ====== END =====
