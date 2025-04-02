@@ -23,6 +23,7 @@ jobs:
                 --push \
                 .
 
+                
             - name: Publish Image to Docker Hub
               run: docker push harshx19/task-manager-frontend:latest
 
